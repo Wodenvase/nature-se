@@ -14,14 +14,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('home')}
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-3 group"
           >
             <img 
               src="/logo2.png" 
               alt="Nature-Se Logo" 
-              className="w-10 h-10 transition-transform group-hover:scale-105"
+              className="w-14 h-14 sm:w-16 sm:h-16 transition-transform group-hover:scale-105"
             />
-            <span className="text-2xl font-bold text-gray-800 transition-colors">
+            <span className="text-2xl sm:text-3xl font-bold text-gray-800 transition-colors">
               Nature-Se
             </span>
           </button>
