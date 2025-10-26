@@ -33,19 +33,19 @@ export default function MythBuster() {
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12">
             <div className="flex items-center justify-center mb-6 sm:mb-8">
               <Snowflake className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-600 mr-2 sm:mr-4" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">🌸 Myth Buster</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Myth Buster</h2>
               <Sun className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-amber-600 ml-2 sm:ml-4" />
             </div>
 
             <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-red-50 rounded-xl sm:rounded-2xl border-l-4 border-red-600">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-red-800 mb-2 flex items-center">
-                ❌ Myth: Honey is Just for Winter
+                Myth: Honey is Just for Winter
               </h3>
             </div>
 
             <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-green-50 rounded-xl sm:rounded-2xl border-l-4 border-green-600">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-800 mb-3 sm:mb-4 flex items-center">
-                ✅ Truth: It's an All-Season Superfood
+                Truth: It's an All-Season Superfood
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4">
                 While honey is often seen as a winter remedy, its benefits go far beyond cold weather.

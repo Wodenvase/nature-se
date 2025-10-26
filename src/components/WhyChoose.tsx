@@ -1,8 +1,10 @@
 import { Heart, Shield, Sparkles, Users } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
+import OrderPopup from './OrderPopup';
 
 export default function WhyChoose() {
   const [visible, setVisible] = useState(false);
+  const [showOrderPopup, setShowOrderPopup] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export default function WhyChoose() {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">💛 Why Choose Nature-Se</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">Why Choose Nature-Se</h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             When you choose Nature-Se, you're not just buying honey – you're choosing purity, health, and positive change.
           </p>
@@ -95,18 +97,18 @@ export default function WhyChoose() {
             Make the switch to authentic, wild forest honey and experience the difference that purity makes.
           </p>
           <button
-            onClick={() => {
-              const productsSection = document.getElementById('products');
-              if (productsSection) {
-                productsSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            onClick={() => setShowOrderPopup(true)}
             className="bg-white text-amber-600 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-xl"
           >
             Shop Now
           </button>
         </div>
       </div>
+      
+      <OrderPopup 
+        isOpen={showOrderPopup} 
+        onClose={() => setShowOrderPopup(false)} 
+      />
     </section>
   );
 }

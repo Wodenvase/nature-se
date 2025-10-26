@@ -5,6 +5,7 @@ import { supabase, Review } from '../lib/supabase';
 export default function Reviews() {
   const [visible, setVisible] = useState(false);
   const [reviewStack, setReviewStack] = useState<Review[]>([]); // Stack to hold latest 6 reviews
+  const [totalRatings, setTotalRatings] = useState(0); // Total number of reviews
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -61,6 +62,9 @@ export default function Reviews() {
       if (error) throw error;
       
       const allReviews = data || [];
+      
+      // Set total ratings count
+      setTotalRatings(allReviews.length);
       
       // Initialize stack with the 6 most recent reviews
       const stackReviews = initializeStack(allReviews);
@@ -138,6 +142,11 @@ export default function Reviews() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">What Our Customers Say</h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600">Real experiences from real people</p>
+          {!loading && totalRatings > 0 && (
+            <p className="text-sm sm:text-base text-amber-600 font-semibold mt-2">
+              Total Ratings: {totalRatings}
+            </p>
+          )}
         </div>
 
         {loading ? (
@@ -182,7 +191,7 @@ export default function Reviews() {
           {submitted && (
             <div className="mb-4 sm:mb-6 bg-green-500 text-white p-3 sm:p-4 rounded-xl flex items-center justify-center space-x-2 text-sm sm:text-base">
               <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="font-semibold">Thank you for your wonderful review! 🍯</span>
+              <span className="font-semibold">Thank you for your wonderful review!</span>
             </div>
           )}
 

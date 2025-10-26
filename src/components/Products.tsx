@@ -1,9 +1,11 @@
 import { ShoppingBag, CheckCircle, Leaf } from 'lucide-react';
 import { useEffect, useState, useRef, useMemo } from 'react';
+import OrderPopup from './OrderPopup';
 
 export default function Products() {
   const [visible, setVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showOrderPopup, setShowOrderPopup] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const productImages = useMemo(() => [
@@ -194,7 +196,10 @@ export default function Products() {
                 </div>
               </div>
 
-              <button className="w-full bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg flex items-center justify-center space-x-2 group">
+              <button 
+                onClick={() => setShowOrderPopup(true)}
+                className="w-full bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg flex items-center justify-center space-x-2 group"
+              >
                 <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
                 <span>Order Now</span>
               </button>
@@ -212,22 +217,33 @@ export default function Products() {
           }`}
         >
           <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-shadow">
-            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🌳</div>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-green-100 rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 rounded-sm"></div>
+            </div>
             <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Forest Sourced</h4>
             <p className="text-sm sm:text-base text-gray-600">Directly from pristine Indian forests</p>
           </div>
           <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-shadow">
-            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🐝</div>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-amber-600 rounded-full"></div>
+            </div>
             <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Bee Friendly</h4>
             <p className="text-sm sm:text-base text-gray-600">Ethical harvesting practices</p>
           </div>
           <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-shadow sm:col-span-2 lg:col-span-1">
-            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">👩</div>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-pink-100 rounded-full flex items-center justify-center">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-pink-600 rounded-full"></div>
+            </div>
             <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Women Empowered</h4>
             <p className="text-sm sm:text-base text-gray-600">Supporting local women workers</p>
           </div>
         </div>
       </div>
+      
+      <OrderPopup 
+        isOpen={showOrderPopup} 
+        onClose={() => setShowOrderPopup(false)} 
+      />
     </section>
   );
 }

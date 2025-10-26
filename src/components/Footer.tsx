@@ -106,9 +106,9 @@ export default function Footer() {
             </p>
             <div className="bg-amber-600/20 border border-amber-600 rounded-lg sm:rounded-xl p-3 sm:p-4">
               <p className="text-amber-400 font-semibold text-xs sm:text-sm">
-                🌿 100% Pure & Natural<br />
-                🐝 Ethically Sourced<br />
-                💛 Women Empowered
+                100% Pure & Natural<br />
+                Ethically Sourced<br />
+                Women Empowered
               </p>
             </div>
           </div>

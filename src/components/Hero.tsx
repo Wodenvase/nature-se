@@ -38,31 +38,38 @@ export default function Hero() {
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
-        <div className="mb-4 sm:mb-6 flex justify-center">
-          <div className="text-4xl sm:text-5xl md:text-6xl animate-bounce">🍯</div>
+        <div className="mb-6 sm:mb-8 flex justify-center">
+          <div className="hover:scale-105 transition-transform duration-300">
+            <img 
+              src="/circular_logo.png" 
+              alt="Nature-Se Logo" 
+              className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full object-cover shadow-lg"
+              loading="eager"
+            />
+          </div>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800 mb-6 sm:mb-8 leading-tight">
           Nature-Se
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl text-amber-700 font-semibold mb-3 sm:mb-4">
+        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-amber-700 font-semibold mb-6 sm:mb-8">
           Wild Forest Honey
         </p>
 
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 sm:mb-12 font-medium">
-          <span className="px-3 sm:px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-md">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 text-base sm:text-lg md:text-xl text-gray-700 mb-8 sm:mb-10 font-medium">
+          <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur rounded-full shadow-lg hover:shadow-xl transition-shadow">
             Untamed
           </span>
-          <span className="px-3 sm:px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-md">
+          <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur rounded-full shadow-lg hover:shadow-xl transition-shadow">
             Unfiltered
           </span>
-          <span className="px-3 sm:px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-md">
+          <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur rounded-full shadow-lg hover:shadow-xl transition-shadow">
             Unmatched
           </span>
         </div>
 
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
           One Pure Step Toward Health
         </p>
 
