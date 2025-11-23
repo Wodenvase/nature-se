@@ -1,9 +1,7 @@
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Hero from './components/HeroClean';
 import About from './components/About';
-import MythBuster from './components/MythBuster';
 import Products from './components/Products';
-import WhyChoose from './components/WhyChoose';
 import Reviews from './components/Reviews';
 import Footer from './components/Footer';
 
@@ -12,11 +10,9 @@ function App() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <About />
-      <MythBuster />
-      <Products />
-      <WhyChoose />
-      <Reviews />
+  <About />
+  <Products />
+  <Reviews />
       <Footer />
     </div>
   );

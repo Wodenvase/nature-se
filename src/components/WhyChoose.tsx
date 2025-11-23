@@ -1,10 +1,8 @@
 import { Heart, Shield, Sparkles, Users } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
-import OrderPopup from './OrderPopup';
 
 export default function WhyChoose() {
   const [visible, setVisible] = useState(false);
-  const [showOrderPopup, setShowOrderPopup] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -97,18 +95,18 @@ export default function WhyChoose() {
             Make the switch to authentic, wild forest honey and experience the difference that purity makes.
           </p>
           <button
-            onClick={() => setShowOrderPopup(true)}
+            onClick={() => {
+              const productsSection = document.getElementById('products');
+              if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="bg-white text-amber-600 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-xl"
           >
             Shop Now
           </button>
         </div>
       </div>
-      
-      <OrderPopup 
-        isOpen={showOrderPopup} 
-        onClose={() => setShowOrderPopup(false)} 
-      />
     </section>
   );
 }
