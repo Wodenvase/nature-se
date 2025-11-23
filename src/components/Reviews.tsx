@@ -8,8 +8,7 @@ type GoogleReview = {
   relative_time_description?: string;
 };
 
-const GOOGLE_MAPS_REVIEW_LINK =
-  'https://www.google.com/maps/place/Nature-se/@19.2323068,72.9448897,18689m/data=!3m1!1e3!4m6!3m5!1s0x4c42d5253aa6043f:0x43a14f3eea20bff8!8m2!3d21.0680074!4d82.7525294!16s%2Fg%2F11ynxc29nw?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D';
+const GOOGLE_MAPS_REVIEW_LINK = 'https://g.page/r/Cfi_IOo-T6FDEBI/review';
 
 export default function Reviews() {
   const [visible, setVisible] = useState(false);

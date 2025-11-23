@@ -11,12 +11,6 @@
     @apply font-sans antialiased;
   }
 
-  /* Page background using provided palette */
-  body {
-    background-color: var(--bg);
-    color: #111827; /* sensible default text color */
-  }
-
   /* Image optimization for better loading */
   img {
     max-width: 100%;

@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden site-bg"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50"
     >
       {/* Optimized background image with loading="eager" and proper sizing */}
       <div className="absolute inset-0">
@@ -27,7 +27,7 @@ export default function Hero() {
           alt="Nature-Se Background"
           className="w-full h-full object-cover opacity-30"
           loading="eager"
-          style={{ willChange: 'transform', objectPosition: 'center center' }}
+          style={{ willChange: 'transform' }}
         />
       </div>
 
@@ -73,7 +73,7 @@ export default function Hero() {
 
         <button
           onClick={scrollToNext}
-          className="cta-btn px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:opacity-95 transition-all hover:scale-105"
+          className="bg-amber-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-amber-700 transition-all hover:scale-105 shadow-xl"
         >
           Discover Our Story
         </button>
@@ -81,10 +81,9 @@ export default function Hero() {
 
       <button
         onClick={scrollToNext}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-        aria-label="Scroll down"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
       >
-        <ArrowDown className="w-6 h-6 sm:w-8 sm:h-8 cta-text" />
+        <ArrowDown className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600" />
       </button>
     </section>
   );
