@@ -11,6 +11,12 @@
     @apply font-sans antialiased;
   }
 
+  /* Page background using provided palette */
+  body {
+    background-color: var(--bg);
+    color: #111827; /* sensible default text color */
+  }
+
   /* Image optimization for better loading */
   img {
     max-width: 100%;
@@ -25,6 +31,33 @@
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
+  }
+
+  /* Design palette variables from provided mockups */
+  :root {
+    --box: #faf9f6; /* For boxes */
+    --bg: #f0ede5; /* Page background */
+    --product-suggest: #f5f5dc; /* product page suggestion */
+    --cta: #e5994c; /* important clickable buttons */
+    --muted: #6b6b6b;
+  }
+
+  /* Reusable utility classes for the design */
+  .site-bg {
+    background-color: var(--bg);
+  }
+
+  .box-bg {
+    background-color: var(--box);
+  }
+
+  .cta-btn {
+    background-color: var(--cta);
+    color: white;
+  }
+
+  .cta-btn:hover {
+    filter: brightness(0.95);
   }
 }
 
