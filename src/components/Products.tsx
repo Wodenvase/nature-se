@@ -1,6 +1,6 @@
 import { ShoppingBag, CheckCircle, Leaf } from 'lucide-react';
 import { useEffect, useState, useRef, useMemo } from 'react';
-import OrderPopup from './OrderPopup';
+// Order now links open external Amazon product pages
 
 export default function Products() {
   const [visible, setVisible] = useState(false);
@@ -8,7 +8,7 @@ export default function Products() {
   const [currentImageIndex1, setCurrentImageIndex1] = useState(0);
   const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const [showPopup, setShowPopup] = useState(false);
+  // popup removed; Order Now buttons now link directly to Amazon
 
   // Product 1 images (Kashmir edition)
   const product1Images = useMemo(() => ['/01.jpg', '/02.jpg', '/03.jpg'], []);
@@ -54,11 +54,10 @@ export default function Products() {
           <p className="text-lg sm:text-xl text-gray-600">Experience the purity of the forest</p>
         </div>
 
-  {/* Order popup modal */}
-  <OrderPopup open={showPopup} onClose={() => setShowPopup(false)} />
+          
 
         <div
-          className={`max-w-6xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden transition-all duration-1000 ${
+          className={`relative max-w-6xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden transition-all duration-1000 ${
             visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
@@ -166,10 +165,10 @@ export default function Products() {
                 </div>
               </div>
 
-              <button onClick={() => setShowPopup(true)} className="w-full bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+              <a href="https://amzn.in/d/3owxanj" target="_blank" rel="noopener noreferrer" className="w-full inline-flex bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg items-center justify-center space-x-2">
                 <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Order Now</span>
-              </button>
+              </a>
             </div>
 
             {/* Product 2 column */}
@@ -255,10 +254,10 @@ export default function Products() {
                 </div>
               </div>
 
-              <button onClick={() => setShowPopup(true)} className="w-full bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+              <a href="https://amzn.in/d/gjd7LgU" target="_blank" rel="noopener noreferrer" className="w-full inline-flex bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg items-center justify-center space-x-2">
                 <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Order Now</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
