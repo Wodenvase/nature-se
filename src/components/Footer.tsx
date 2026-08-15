@@ -93,6 +93,10 @@ export default function Footer() {
                 <span className="text-xs sm:text-sm text-gray-400 break-all">the.laxmidhar@gmail.com</span>
               </li>
               <li className="flex items-start justify-center sm:justify-start space-x-3">
+                <span className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0 mt-1" />
+                <span className="text-xs sm:text-sm text-gray-400">ph no: +91 96997 20786</span>
+              </li>
+              <li className="flex items-start justify-center sm:justify-start space-x-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0 mt-1" />
                 <span className="text-xs sm:text-sm text-gray-400">Thane, Maharashtra</span>
               </li>

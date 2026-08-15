@@ -4,9 +4,11 @@ import { useEffect, useState, useRef, useMemo } from 'react';
 
 export default function Products() {
   const [visible, setVisible] = useState(false);
-  // separate image indices for two products
+  // separate image indices for four products
   const [currentImageIndex1, setCurrentImageIndex1] = useState(0);
   const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
+  const [currentImageIndex3, setCurrentImageIndex3] = useState(0);
+  const [currentImageIndex4, setCurrentImageIndex4] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   // popup removed; Order Now buttons now link directly to Amazon
 
@@ -14,6 +16,10 @@ export default function Products() {
   const product1Images = useMemo(() => ['/01.jpg', '/02.jpg', '/03.jpg'], []);
   // Product 2 images (Royal Dryfruits Honey)
   const product2Images = useMemo(() => ['/04.jpg', '/05.jpg', '/06.jpg'], []);
+  // Product 3 images (Ceylon Cinnamon Honey) - use the two attached cinnamon images
+  const product3Images = useMemo(() => ['/ceylon-01.jpg', '/ceylon-02.jpg'], []);
+  // Product 4 images (Royal Zaffran Honey) - use the two attached zaffran images
+  const product4Images = useMemo(() => ['/zaffran-01.jpg', '/zaffran-02.jpg'], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,11 +40,11 @@ export default function Products() {
 
   // Preload images for faster switching
   useEffect(() => {
-    [...product1Images, ...product2Images].forEach((src) => {
+    [...product1Images, ...product2Images, ...product3Images, ...product4Images].forEach((src) => {
       const img = new Image();
       img.src = src;
     });
-  }, [product1Images, product2Images]);
+  }, [product1Images, product2Images, product3Images, product4Images]);
 
   // benefits list removed (unused) to satisfy linter; keep product details focused in the UI
 
@@ -255,6 +261,184 @@ export default function Products() {
               </div>
 
               <a href="https://amzn.in/d/gjd7LgU" target="_blank" rel="noopener noreferrer" className="w-full inline-flex bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg items-center justify-center space-x-2">
+                <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
+                <span>Order Now</span>
+              </a>
+            </div>
+
+            {/* Product 3 column */}
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100">
+              <div className="w-full max-w-md mb-4 text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start mb-2">
+                  <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600 mr-2 sm:mr-3" />
+                  <span className="text-xs sm:text-sm font-semibold text-amber-600 uppercase tracking-wide">Premium Quality</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">NATURE-SE CEYLON CINNAMON HONEY</h3>
+              </div>
+
+              {/* Images first */}
+              <div className="relative w-full max-w-sm sm:max-w-md group mb-4">
+                <div className="relative w-full aspect-square mb-4 sm:mb-6 lg:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                  <img src={product3Images[currentImageIndex3]} alt={`NATURE-SE CEYLON CINNAMON HONEY - View ${currentImageIndex3 + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+
+                <div className="flex justify-center space-x-2 sm:space-x-3 mb-4">
+                  {product3Images.map((_, index) => (
+                    <button key={index} onClick={() => setCurrentImageIndex3(index)} onMouseEnter={() => setCurrentImageIndex3(index)} className={`relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg sm:rounded-xl overflow-hidden border-2 sm:border-3 transition-all duration-300 ${currentImageIndex3 === index ? 'border-amber-600 ring-2 sm:ring-4 ring-amber-600/30 scale-110' : 'border-amber-300 hover:border-amber-500 opacity-70 hover:opacity-100'}`}>
+                      <img src={product3Images[index]} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+
+                <div className="inline-flex items-center space-x-2 bg-green-500 text-white px-4 sm:px-6 py-2 rounded-full shadow-lg mb-4">
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-semibold text-sm sm:text-base">100% Pure</span>
+                </div>
+              </div>
+
+              {/* Size & cost */}
+              <div className="bg-amber-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 w-full max-w-sm">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div>
+                    <span className="text-xs sm:text-sm text-gray-600">Available Size</span>
+                    <div className="mt-1 sm:mt-2">
+                      <span className="text-xl sm:text-2xl font-bold text-gray-800">250g</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs sm:text-sm text-gray-600">MRP</span>
+                    <div className="mt-1 sm:mt-2">
+                      <span className="text-2xl sm:text-3xl font-bold text-amber-600">₹550</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center text-xs sm:text-sm text-gray-600 bg-green-100 rounded-lg py-2">Ceylon cinnamon infused honey</div>
+              </div>
+
+              {/* Nutrition */}
+              <div className="mb-6 sm:mb-8 max-w-sm w-full">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Nutritional Values (per 100g):</h4>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 sm:p-6 border border-green-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Calories</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">350 kcal</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Carbohydrates</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">85 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Sugar</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">82 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Fat</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">0 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Protein</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">0 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Sodium</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">10 mg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" className="w-full inline-flex bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg items-center justify-center space-x-2">
+                <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
+                <span>Order Now</span>
+              </a>
+            </div>
+
+            {/* Product 4 column */}
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100">
+              <div className="w-full max-w-md mb-4 text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start mb-2">
+                  <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600 mr-2 sm:mr-3" />
+                  <span className="text-xs sm:text-sm font-semibold text-amber-600 uppercase tracking-wide">Premium Quality</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">NATURE-SE ROYAL ZAFFRAN HONEY</h3>
+              </div>
+
+              {/* Images first */}
+              <div className="relative w-full max-w-sm sm:max-w-md group mb-4">
+                <div className="relative w-full aspect-square mb-4 sm:mb-6 lg:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                  <img src={product4Images[currentImageIndex4]} alt={`NATURE-SE ROYAL ZAFFRAN HONEY - View ${currentImageIndex4 + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+
+                <div className="flex justify-center space-x-2 sm:space-x-3 mb-4">
+                  {product4Images.map((_, index) => (
+                    <button key={index} onClick={() => setCurrentImageIndex4(index)} onMouseEnter={() => setCurrentImageIndex4(index)} className={`relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg sm:rounded-xl overflow-hidden border-2 sm:border-3 transition-all duration-300 ${currentImageIndex4 === index ? 'border-amber-600 ring-2 sm:ring-4 ring-amber-600/30 scale-110' : 'border-amber-300 hover:border-amber-500 opacity-70 hover:opacity-100'}`}>
+                      <img src={product4Images[index]} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+
+                <div className="inline-flex items-center space-x-2 bg-green-500 text-white px-4 sm:px-6 py-2 rounded-full shadow-lg mb-4">
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-semibold text-sm sm:text-base">100% Pure</span>
+                </div>
+              </div>
+
+              {/* Size & cost */}
+              <div className="bg-amber-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 w-full max-w-sm">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div>
+                    <span className="text-xs sm:text-sm text-gray-600">Available Size</span>
+                    <div className="mt-1 sm:mt-2">
+                      <span className="text-xl sm:text-2xl font-bold text-gray-800">250g</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs sm:text-sm text-gray-600">MRP</span>
+                    <div className="mt-1 sm:mt-2">
+                      <span className="text-2xl sm:text-3xl font-bold text-amber-600">₹700</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-center text-xs sm:text-sm text-gray-600 bg-green-100 rounded-lg py-2">Zaffran infused premium honey</div>
+              </div>
+
+              {/* Nutrition */}
+              <div className="mb-6 sm:mb-8 max-w-sm w-full">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Nutritional Values (per 100g):</h4>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 sm:p-6 border border-green-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Calories</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">390 kcal</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Carbohydrates</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">191 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Sugar</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">52 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Fat</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">15.4 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Protein</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">6.8 g</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">Sodium</span>
+                      <span className="text-gray-800 font-bold text-sm sm:text-base">10 mg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" className="w-full inline-flex bg-amber-600 text-white py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-amber-700 transition-all hover:scale-105 shadow-lg items-center justify-center space-x-2">
                 <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Order Now</span>
               </a>
